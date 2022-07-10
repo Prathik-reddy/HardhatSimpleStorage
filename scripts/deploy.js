@@ -12,6 +12,15 @@ async function main() {
     await simpleStorage.deployTransaction.wait(6);// wait for 6 blocks before verificaiton
     await verify(simpleStorage.address,[]);
   }
+  const currentVal = await simpleStorage.retrieve();
+  console.log(`current val is : ${currentVal}`);
+
+  // Update the value
+  const transactionResponse =  await simpleStorage.store(7); // store value as 7
+  await transactionResponse.wait(1);
+  const updatedValue = await simpleStorage.retrieve();
+  console.log(`updated value is : ${updatedValue}`);
+
 }
 
 // verify the contract that is deployed

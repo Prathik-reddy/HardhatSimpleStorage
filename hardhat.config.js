@@ -1,6 +1,7 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 require("@nomiclabs/hardhat-etherscan");// for verificaiton
+require("./tasks/blockno");
 /** @type import('hardhat/config').HardhatUserConfig */
 
 const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL
@@ -17,5 +18,9 @@ module.exports = {
   solidity: "0.8.9",
   etherscan : {
     apiKey : ETHERSCAN_API_KEY,
-  }
+  },
+  localhost : {
+    url : "http://127.0.0.1:8545/",
+    chainId : 31337,
+  },
 };
